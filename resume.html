@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saul Salazar — Sr. DevOps Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ── SCREEN STYLES ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:       #0f0f14;
+  --ink2:      #3a3a4a;
+  --ink3:      #7a7a8c;
+  --cyan:      #0099aa;
+  --purple:    #6600cc;
+  --bg:        #ffffff;
+  --bg2:       #f5f4f8;
+  --rule:      #e0dfe8;
+  --page-w:    900px;
+  --gap:       0.55rem;
+}
+
+html { background: #ddd; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: #ddd;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Page wrapper */
+.page {
+  width: var(--page-w);
+  min-height: 1122px; /* A4-ish at 96dpi */
+  background: var(--bg);
+  margin: 2rem auto;
+  padding: 0;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.18);
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+/* ── HEADER (full width) ── */
+header {
+  grid-column: 1 / -1;
+  background: var(--ink);
+  padding: 1.4rem 1.8rem 1.3rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.hdr-left { flex: 1; }
+
+.name {
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.name span { color: #00ddff; }
+
+.title-line {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.hdr-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.contact-item {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-item:hover { color: #00ddff; }
+.contact-item .dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: #00ddff;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ── SIDEBAR ── */
+aside {
+  background: var(--bg2);
+  border-right: 1px solid var(--rule);
+  padding: 1.4rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+/* ── MAIN CONTENT ── */
+.content {
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* ── SECTION TITLES ── */
+.sec-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 4px;
+  margin-bottom: 0.6rem;
+}
+
+/* ── SUMMARY ── */
+.summary p {
+  font-size: 12px;
+  color: var(--ink2);
+  line-height: 1.6;
+}
+
+/* ── EXPERIENCE ── */
+.exp-item {
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px dashed var(--rule);
+}
+.exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.exp-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1px;
+}
+
+.exp-company {
+  font-weight: 600;
+  font-size: 12.5px;
+  color: var(--ink);
+}
+
+.exp-period {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  color: var(--ink3);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.exp-role {
+  font-size: 11px;
+  color: var(--purple);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.exp-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.exp-bullets li {
+  font-size: 11.5px;
+  color: var(--ink2);
+  padding-left: 1rem;
+  position: relative;
+  line-height: 1.45;
+}
+
+.exp-bullets li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+  font-size: 9px;
+  top: 3px;
+}
+
+.exp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 5px;
+}
+
+.exp-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--ink3);
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  padding: 1px 6px;
+  letter-spacing: 0.5px;
+}
+
+/* ── SIDEBAR: SKILLS ── */
+.skill-group { margin-bottom: 0.8rem; }
+.skill-group:last-child { margin-bottom: 0; }
+
+.skill-group-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 5px;
+}
+
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  color: var(--ink2);
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 2px 7px;
+  letter-spacing: 0.3px;
+}
+
+/* ── SIDEBAR: PROJECTS ── */
+.proj-item {
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--rule);
+}
+.proj-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.proj-name {
+  font-weight: 600;
+  font-size: 11.5px;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.proj-status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.live   { background: #00bb66; }
+.in-dev { background: #ffaa00; }
+
+.proj-cmd {
+  font-family: 'DM Mono', monospace;
+  font-size: 8.5px;
+  color: var(--cyan);
+  margin-bottom: 3px;
+  letter-spacing: 0.3px;
+}
+
+.proj-desc {
+  font-size: 10.5px;
+  color: var(--ink3);
+  line-height: 1.4;
+}
+
+/* ── SIDEBAR: EDUCATION / EXTRA ── */
+.extra-item {
+  font-size: 11px;
+  color: var(--ink2);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.extra-item::before {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--cyan);
+  flex-shrink: 0;
+}
+
+/* ── PRINT BUTTON (screen only) ── */
+.print-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: background 0.2s;
+  z-index: 100;
+}
+.print-btn:hover { background: var(--cyan); }
+
+/* ══════════════════════════════
+   PRINT STYLES
+══════════════════════════════ */
+@media print {
+  html, body { background: #fff !important; }
+
+  .print-btn { display: none !important; }
+
+  .page {
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    box-shadow: none;
+    page-break-after: avoid;
+  }
+
+  @page {
+    size: letter;
+    margin: 0.4in 0.45in;
+  }
+
+  /* Keep colors in print */
+  .name span      { color: #0077aa !important; -webkit-print-color-adjust: exact; }
+  header          { background: #0f0f14 !important; -webkit-print-color-adjust: exact; }
+  .sec-title      { color: var(--cyan) !important; }
+  .exp-role       { color: var(--purple) !important; }
+  .proj-status-dot.live   { background: #00bb66 !important; }
+  .proj-status-dot.in-dev { background: #ffaa00 !important; }
+}
+
+/* ── RESPONSIVE (screen) ── */
+@media (max-width: 920px) {
+  :root { --page-w: 100%; }
+  .page { margin: 0; box-shadow: none; }
+}
+
+@media (max-width: 640px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  aside { border-right: none; border-bottom: 1px solid var(--rule); }
+  header { flex-direction: column; align-items: flex-start; }
+  .hdr-right { align-items: flex-start; }
+}
+
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">⎙ PRINT / SAVE PDF</button>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="hdr-left">
+      <div class="name">SAUL <span>SALAZAR</span></div>
+      <div class="title-line">Sr. DevOps Engineer &amp; SRE // Team Lead // Monterrey, MX</div>
+    </div>
+    <div class="hdr-right">
+      <a href="mailto:saulmmendoza@gmail.com" class="contact-item">
+        <span class="dot"></span>saulmmendoza@gmail.com
+      </a>
+      <a href="tel:8125029287" class="contact-item">
+        <span class="dot"></span>81-2502-9287
+      </a>
+      <a href="https://mejorllamaasaul.com" class="contact-item">
+        <span class="dot"></span>mejorllamaasaul.com
+      </a>
+      <a href="https://resume.mejorllamaasaul.com" class="contact-item">
+        <span class="dot"></span>resume.mejorllamaasaul.com
+      </a>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside>
+
+    <!-- SKILLS -->
+    <div>
+      <div class="sec-title">Skills</div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Cloud &amp; Infra</div>
+        <div class="skill-pills">
+          <span class="pill">AWS</span>
+          <span class="pill">GCP</span>
+          <span class="pill">Docker</span>
+          <span class="pill">Kubernetes</span>
+          <span class="pill">OpenShift</span>
+          <span class="pill">Terraform</span>
+          <span class="pill">Ansible</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">CI/CD</div>
+        <div class="skill-pills">
+          <span class="pill">GitLab CI</span>
+          <span class="pill">Jenkins</span>
+          <span class="pill">CodePipeline</span>
+          <span class="pill">CloudFormation</span>
+          <span class="pill">Serverless</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Backend</div>
+        <div class="skill-pills">
+          <span class="pill">Node.js</span>
+          <span class="pill">Python</span>
+          <span class="pill">Bash</span>
+          <span class="pill">Java</span>
+          <span class="pill">REST API</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Databases</div>
+        <div class="skill-pills">
+          <span class="pill">MySQL</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">MongoDB</span>
+          <span class="pill">DynamoDB</span>
+          <span class="pill">RabbitMQ</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Security</div>
+        <div class="skill-pills">
+          <span class="pill">PCI DSS</span>
+          <span class="pill">IAM</span>
+          <span class="pill">JWT/RBAC</span>
+          <span class="pill">Least Privilege</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-title">Leadership</div>
+        <div class="skill-pills">
+          <span class="pill">SAFe® Agile</span>
+          <span class="pill">Scrum</span>
+          <span class="pill">OKRs/KPIs</span>
+          <span class="pill">Mentoring</span>
+          <span class="pill">Hiring</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div>
+      <div class="sec-title">Open Source</div>
+
+      <div class="proj-item">
+        <div class="proj-name">
+          DevInstall.com
+          <span class="proj-status-dot live"></span>
+        </div>
+        <div class="proj-cmd">curl devinstall.com | sh</div>
+        <div class="proj-desc">Dev machine setup, cross-platform, one command.</div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-name">
+          ChadPlan.dev
+          <span class="proj-status-dot live"></span>
+        </div>
+        <div class="proj-cmd">curl chadplan.dev | sh</div>
+        <div class="proj-desc">Plain-text task management strategy.</div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-name">
+          HomelabX.net
+          <span class="proj-status-dot in-dev"></span>
+        </div>
+        <div class="proj-cmd">curl homelabx.net | sh</div>
+        <div class="proj-desc">Homelab: 10+ apps + AI, one command.</div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-name">
+          ChadStack.dev
+          <span class="proj-status-dot in-dev"></span>
+        </div>
+        <div class="proj-cmd">curl chadstack.dev | sh</div>
+        <div class="proj-desc">Full tech company stack over 6 platforms.</div>
+      </div>
+    </div>
+
+    <!-- EXTRA -->
+    <div>
+      <div class="sec-title">Passions</div>
+      <div class="extra-item">Learning &amp; Community</div>
+      <div class="extra-item">Open Source &amp; GitOps</div>
+      <div class="extra-item">Games &amp; Tacos 🌮</div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+
+    <!-- SUMMARY -->
+    <div class="summary">
+      <div class="sec-title">Summary</div>
+      <p>10+ years in software development and distributed systems. Specialized in Cloud Infrastructure, GitOps, and SRE practices. Proven track record leading cross-functional teams in Fintech (PCI DSS), enterprise aviation, and consulting environments. Passionate about automation, least-privilege security, and mentoring engineers.</p>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div>
+      <div class="sec-title">Experience</div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <span class="exp-company">GBM.com — Brokerage House</span>
+          <span class="exp-period">2023 – Present</span>
+        </div>
+        <div class="exp-role">Sr. DevOps Engineer / SRE &amp; Team Lead</div>
+        <ul class="exp-bullets">
+          <li>Hybrid Cloud environment with microservices — IaC, GitOps, automation, least privilege</li>
+          <li>AWS: CloudFormation, EC2, Route53, IAM, Lambda, CodeBuild, CodePipeline, .NET</li>
+          <li>Mentor &amp; cross-team collaborator across engineering squads</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">AWS</span><span class="exp-tag">CloudFormation</span><span class="exp-tag">Docker</span><span class="exp-tag">Serverless</span><span class="exp-tag">GitOps</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <span class="exp-company">Clip.mx — Fintech Unicorn</span>
+          <span class="exp-period">2021 – 2023</span>
+        </div>
+        <div class="exp-role">Sr. DevOps Engineer / SRE &amp; Team Lead</div>
+        <ul class="exp-bullets">
+          <li>Payments &amp; VISA team — resolved critical P1 incidents, PCI DSS / AMEX / VISA compliance</li>
+          <li>AWS: ECS, Lambda, RDS, DynamoDB, CloudWatch, SQS/SNS, SAM, ECR, CodePipeline</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">AWS ECS</span><span class="exp-tag">Python</span><span class="exp-tag">RabbitMQ</span><span class="exp-tag">PCI DSS</span><span class="exp-tag">Docker</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <span class="exp-company">Chad Systems — Consulting</span>
+          <span class="exp-period">2020 – 2021</span>
+        </div>
+        <div class="exp-role">Sr. DevOps Engineer / SRE &amp; Team Lead</div>
+        <ul class="exp-bullets">
+          <li>AWS solutions across analytics, comms, eCommerce &amp; insurance (MetLife México chatbot)</li>
+          <li>Built REST API generator with JWT, RBAC, automated testing</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Kubernetes</span><span class="exp-tag">Terraform</span><span class="exp-tag">GitLab CI</span><span class="exp-tag">Prometheus</span><span class="exp-tag">MongoDB</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <span class="exp-company">Southwest Airlines — Enterprise</span>
+          <span class="exp-period">2019 – 2020</span>
+        </div>
+        <div class="exp-role">Infrastructure Engineer / DevOps Architect</div>
+        <ul class="exp-bullets">
+          <li>CI/CD for 300+ customer teams; led a team of 5 — Kubernetes, OpenShift, Jenkins, Terraform</li>
+          <li>Built analytics system aggregating metrics from Jenkins, BitBucket, SonarQube, Nexus</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Kubernetes</span><span class="exp-tag">OpenShift</span><span class="exp-tag">Jenkins</span><span class="exp-tag">Ansible</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <span class="exp-company">Softtek — Enterprise IT</span>
+          <span class="exp-period">2015 – 2020</span>
+        </div>
+        <div class="exp-role">Sr. Software Engineer &amp; Team Lead + Fullstack Instructor</div>
+        <ul class="exp-bullets">
+          <li>Led 7–12 devs; built 15+ backends, webapps, mobile &amp; enterprise portals</li>
+          <li>First instructor at Codellege — Node.js, Docker &amp; DevOps workshops for engineering undergrads</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Node.js</span><span class="exp-tag">AWS</span><span class="exp-tag">Docker</span><span class="exp-tag">PHP</span><span class="exp-tag">Agile</span>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <span class="exp-company">USA Startups + Interclan ISP</span>
+          <span class="exp-period">2011 – 2015</span>
+        </div>
+        <div class="exp-role">Web Developer &amp; Linux SysAdmin</div>
+        <ul class="exp-bullets">
+          <li>Linux server maintenance (Debian &amp; RedHat), bare-metal &amp; VMware virtualization</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Linux</span><span class="exp-tag">nginx</span><span class="exp-tag">Apache</span><span class="exp-tag">VMware</span>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /content -->
+
+</div><!-- /page -->
+
+</body>
+</html>
