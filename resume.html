@@ -5,273 +5,189 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Saul Salazar — Sr. DevOps Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-
-/* ── SCREEN STYLES ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --ink:       #0f0f14;
-  --ink2:      #3a3a4a;
-  --ink3:      #7a7a8c;
-  --cyan:      #0099aa;
-  --purple:    #6600cc;
-  --bg:        #ffffff;
-  --bg2:       #f5f4f8;
-  --rule:      #e0dfe8;
-  --page-w:    900px;
-  --gap:       0.55rem;
+  --ink:    #0f0f14;
+  --ink2:   #3a3a4a;
+  --ink3:   #7a7a8c;
+  --cyan:   #008899;
+  --purple: #5500bb;
+  --bg:     #ffffff;
+  --bg2:    #f4f3f8;
+  --rule:   #dddce6;
 }
 
-html { background: #ddd; }
-
-body {
+html, body {
+  background: #ccc;
   font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.45;
   color: var(--ink);
-  background: #ddd;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
 
-/* Page wrapper */
-.page {
-  width: var(--page-w);
-  min-height: 1122px; /* A4-ish at 96dpi */
+/* ── OUTER WRAPPER (screen centering only) ── */
+.sheet-wrap {
+  padding: 1.5rem;
+}
+
+/* ── THE SHEET ── */
+.sheet {
+  width: 780px;
+  margin: 0 auto;
   background: var(--bg);
-  margin: 2rem auto;
-  padding: 0;
-  box-shadow: 0 4px 40px rgba(0,0,0,0.18);
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  grid-template-rows: auto 1fr;
+  box-shadow: 0 6px 40px rgba(0,0,0,0.2);
+  overflow: hidden;
 }
 
-/* ── HEADER (full width) ── */
-header {
-  grid-column: 1 / -1;
+/* ── HEADER ── */
+.hdr {
   background: var(--ink);
-  padding: 1.4rem 1.8rem 1.3rem;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1rem;
+  padding: 1.1rem 1.4rem 1rem;
+  overflow: hidden;
 }
 
-.hdr-left { flex: 1; }
+.hdr-name {
+  float: left;
+}
 
-.name {
-  font-size: 26px;
+.hdr-name .name {
+  font-size: 24px;
   font-weight: 600;
   color: #fff;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
   line-height: 1;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 
-.name span { color: #00ddff; }
+.hdr-name .name span { color: #00ddff; }
 
-.title-line {
+.hdr-name .role {
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  color: rgba(255,255,255,0.45);
-  letter-spacing: 3px;
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 2.5px;
   text-transform: uppercase;
 }
 
-.hdr-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
+.hdr-contact {
+  float: right;
+  text-align: right;
 }
 
-.contact-item {
+.hdr-contact a,
+.hdr-contact span {
+  display: block;
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  color: rgba(255,255,255,0.55);
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  font-size: 9.5px;
+  color: rgba(255,255,255,0.5);
   text-decoration: none;
-  transition: color 0.2s;
-}
-.contact-item:hover { color: #00ddff; }
-.contact-item .dot {
-  width: 4px; height: 4px;
-  border-radius: 50%;
-  background: #00ddff;
-  opacity: 0.5;
-  flex-shrink: 0;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
 }
 
-/* ── SIDEBAR ── */
-aside {
+.hdr-contact a:hover { color: #00ddff; }
+
+/* ── BODY: sidebar float layout ── */
+.body {
+  overflow: hidden;
+}
+
+.sidebar {
+  float: left;
+  width: 210px;
   background: var(--bg2);
   border-right: 1px solid var(--rule);
-  padding: 1.4rem 1.2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
+  padding: 1rem;
 }
 
-/* ── MAIN CONTENT ── */
-.content {
-  padding: 1.4rem 1.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+.main {
+  float: left;
+  width: calc(100% - 211px);
+  padding: 1rem 1.2rem;
 }
 
-/* ── SECTION TITLES ── */
-.sec-title {
+/* ── SECTION LABEL ── */
+.sec {
   font-family: 'DM Mono', monospace;
-  font-size: 9px;
+  font-size: 8.5px;
   font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--cyan);
   border-bottom: 1px solid var(--rule);
-  padding-bottom: 4px;
-  margin-bottom: 0.6rem;
+  padding-bottom: 3px;
+  margin-bottom: 0.55rem;
 }
 
-/* ── SUMMARY ── */
-.summary p {
-  font-size: 12px;
-  color: var(--ink2);
-  line-height: 1.6;
-}
+/* ── SIDEBAR BLOCKS ── */
+.sb-block { margin-bottom: 1rem; }
+.sb-block:last-child { margin-bottom: 0; }
 
-/* ── EXPERIENCE ── */
-.exp-item {
-  margin-bottom: 0.85rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px dashed var(--rule);
-}
-.exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-.exp-top {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-bottom: 1px;
-}
-
-.exp-company {
-  font-weight: 600;
-  font-size: 12.5px;
-  color: var(--ink);
-}
-
-.exp-period {
+.skill-cat {
   font-family: 'DM Mono', monospace;
-  font-size: 9.5px;
-  color: var(--ink3);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.exp-role {
-  font-size: 11px;
-  color: var(--purple);
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-
-.exp-bullets {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.exp-bullets li {
-  font-size: 11.5px;
-  color: var(--ink2);
-  padding-left: 1rem;
-  position: relative;
-  line-height: 1.45;
-}
-
-.exp-bullets li::before {
-  content: '▸';
-  position: absolute;
-  left: 0;
-  color: var(--cyan);
-  font-size: 9px;
-  top: 3px;
-}
-
-.exp-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 5px;
-}
-
-.exp-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 9px;
-  color: var(--ink3);
-  background: var(--bg2);
-  border: 1px solid var(--rule);
-  padding: 1px 6px;
-  letter-spacing: 0.5px;
-}
-
-/* ── SIDEBAR: SKILLS ── */
-.skill-group { margin-bottom: 0.8rem; }
-.skill-group:last-child { margin-bottom: 0; }
-
-.skill-group-title {
-  font-family: 'DM Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 2.5px;
+  font-size: 8px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--purple);
-  margin-bottom: 5px;
+  margin-bottom: 4px;
+  margin-top: 6px;
 }
+.skill-cat:first-child { margin-top: 0; }
 
-.skill-pills {
+.pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 3px;
 }
 
 .pill {
   font-family: 'DM Mono', monospace;
-  font-size: 9.5px;
+  font-size: 8.5px;
   color: var(--ink2);
   background: #fff;
   border: 1px solid var(--rule);
-  padding: 2px 7px;
-  letter-spacing: 0.3px;
+  padding: 1px 5px;
 }
 
-/* ── SIDEBAR: PROJECTS ── */
-.proj-item {
-  margin-bottom: 0.7rem;
-  padding-bottom: 0.7rem;
+/* ── PROJECTS (sidebar) ── */
+.proj {
+  margin-bottom: 0.55rem;
+  padding-bottom: 0.55rem;
   border-bottom: 1px solid var(--rule);
 }
-.proj-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.proj:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
-.proj-name {
-  font-weight: 600;
-  font-size: 11.5px;
-  color: var(--ink);
+.proj-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 
-.proj-status-dot {
+.proj-name {
+  font-weight: 600;
+  font-size: 10.5px;
+  color: var(--ink);
+}
+
+.proj-name a {
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.proj-name a:hover {
+  color: var(--cyan);
+  border-bottom-color: var(--cyan);
+}
+
+.dot {
   width: 6px; height: 6px;
   border-radius: 50%;
   flex-shrink: 0;
@@ -281,363 +197,454 @@ aside {
 
 .proj-cmd {
   font-family: 'DM Mono', monospace;
-  font-size: 8.5px;
+  font-size: 8px;
   color: var(--cyan);
-  margin-bottom: 3px;
-  letter-spacing: 0.3px;
+  margin-bottom: 2px;
 }
 
 .proj-desc {
-  font-size: 10.5px;
+  font-size: 9.5px;
   color: var(--ink3);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
-/* ── SIDEBAR: EDUCATION / EXTRA ── */
-.extra-item {
+/* ── PASSIONS ── */
+.passion {
+  font-size: 10px;
+  color: var(--ink2);
+  margin-bottom: 3px;
+  padding-left: 0.8rem;
+  position: relative;
+}
+.passion::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+  font-size: 14px;
+  top: -2px;
+}
+
+/* ── SUMMARY ── */
+.summary {
+  margin-bottom: 0.85rem;
+}
+
+.summary p {
   font-size: 11px;
   color: var(--ink2);
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  line-height: 1.55;
 }
-.extra-item::before {
-  content: '';
-  width: 4px; height: 4px;
-  border-radius: 50%;
-  background: var(--cyan);
+
+/* ── EXPERIENCE ── */
+.exp {
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px dashed var(--rule);
+}
+.exp:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.exp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0;
+}
+
+.exp-co {
+  font-weight: 600;
+  font-size: 11.5px;
+  color: var(--ink);
+}
+
+.exp-period {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--ink3);
+  white-space: nowrap;
   flex-shrink: 0;
 }
 
-/* ── PRINT BUTTON (screen only) ── */
+.exp-role {
+  font-size: 10px;
+  color: var(--purple);
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.exp-list {
+  list-style: none;
+  margin-bottom: 4px;
+}
+
+.exp-list li {
+  font-size: 10.5px;
+  color: var(--ink2);
+  padding-left: 0.9rem;
+  position: relative;
+  line-height: 1.4;
+  margin-bottom: 1px;
+}
+
+.exp-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+  font-size: 8px;
+  top: 3px;
+}
+
+.exp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.etag {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  color: var(--ink3);
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  padding: 1px 5px;
+}
+
+/* ── PRINT BUTTON ── */
 .print-btn {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: 1.2rem;
+  right: 1.2rem;
   background: var(--ink);
   color: #fff;
   border: none;
-  padding: 0.6rem 1.2rem;
+  padding: 0.5rem 1rem;
   font-family: 'DM Mono', monospace;
   font-size: 11px;
   letter-spacing: 2px;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  transition: background 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   z-index: 100;
+  transition: background 0.2s;
 }
 .print-btn:hover { background: var(--cyan); }
 
-/* ══════════════════════════════
-   PRINT STYLES
-══════════════════════════════ */
+/* ══════════════════════════
+   PRINT
+══════════════════════════ */
 @media print {
-  html, body { background: #fff !important; }
+  html, body {
+    background: #fff !important;
+    font-size: 11px;
+  }
+
+  .sheet-wrap { padding: 0; }
+
+  .sheet {
+    width: 100%;
+    box-shadow: none;
+  }
 
   .print-btn { display: none !important; }
 
-  .page {
-    width: 100%;
-    min-height: 0;
-    margin: 0;
-    box-shadow: none;
-    page-break-after: avoid;
-  }
-
   @page {
-    size: letter;
-    margin: 0.4in 0.45in;
+    size: letter portrait;
+    margin: 0.35in 0.4in;
+  }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 800px) {
+  .sheet { width: 100%; }
+  .sheet-wrap { padding: 0; }
+
+  .sidebar, .main {
+    float: none;
+    width: 100%;
   }
 
-  /* Keep colors in print */
-  .name span      { color: #0077aa !important; -webkit-print-color-adjust: exact; }
-  header          { background: #0f0f14 !important; -webkit-print-color-adjust: exact; }
-  .sec-title      { color: var(--cyan) !important; }
-  .exp-role       { color: var(--purple) !important; }
-  .proj-status-dot.live   { background: #00bb66 !important; }
-  .proj-status-dot.in-dev { background: #ffaa00 !important; }
-}
-
-/* ── RESPONSIVE (screen) ── */
-@media (max-width: 920px) {
-  :root { --page-w: 100%; }
-  .page { margin: 0; box-shadow: none; }
-}
-
-@media (max-width: 640px) {
-  .page {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
   }
-  aside { border-right: none; border-bottom: 1px solid var(--rule); }
-  header { flex-direction: column; align-items: flex-start; }
-  .hdr-right { align-items: flex-start; }
-}
 
+  .hdr-name, .hdr-contact {
+    float: none;
+    text-align: left;
+  }
+}
 </style>
 </head>
 <body>
 
 <button class="print-btn" onclick="window.print()">⎙ PRINT / SAVE PDF</button>
 
-<div class="page">
+<div class="sheet-wrap">
+<div class="sheet">
 
   <!-- HEADER -->
-  <header>
-    <div class="hdr-left">
+  <div class="hdr">
+    <div class="hdr-name">
       <div class="name">SAUL <span>SALAZAR</span></div>
-      <div class="title-line">Sr. DevOps Engineer &amp; SRE // Team Lead // Monterrey, MX</div>
+      <div class="role">Sr. DevOps Engineer &amp; SRE</div>
     </div>
-    <div class="hdr-right">
-      <a href="mailto:saulmmendoza@gmail.com" class="contact-item">
-        <span class="dot"></span>saulmmendoza@gmail.com
-      </a>
-      <a href="tel:8125029287" class="contact-item">
-        <span class="dot"></span>81-2502-9287
-      </a>
-      <a href="https://mejorllamaasaul.com" class="contact-item">
-        <span class="dot"></span>mejorllamaasaul.com
-      </a>
-      <a href="https://resume.mejorllamaasaul.com" class="contact-item">
-        <span class="dot"></span>resume.mejorllamaasaul.com
-      </a>
+    <div class="hdr-contact">
+      <a href="https://www.linkedin.com/in/saul-salazar-abc/" target="_blank">linkedin.com</a>
+      <a href="https://github.com/saul-salazar-dotcom">github profile</a>
+      <a href="https://mejorllamaasaul.com">saul-salazar.com</a>
     </div>
-  </header>
+    <div style="clear:both"></div>
+  </div>
 
-  <!-- SIDEBAR -->
-  <aside>
+  <!-- BODY -->
+  <div class="body">
 
-    <!-- SKILLS -->
-    <div>
-      <div class="sec-title">Skills</div>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
 
-      <div class="skill-group">
-        <div class="skill-group-title">Cloud &amp; Infra</div>
-        <div class="skill-pills">
+      <div class="sb-block">
+        <div class="sec">Passions</div>
+        <div class="passion">Learning &amp; Driving</div>
+        <div class="passion">Open Source &amp; GitOps</div>
+        <div class="passion">Servers &amp; Food 🌮</div>
+      </div>
+
+      <div class="sb-block">
+        <div class="sec">Skills</div>
+
+        <div class="skill-cat">Cloud &amp; Infra</div>
+        <div class="pills">
           <span class="pill">AWS</span>
           <span class="pill">GCP</span>
           <span class="pill">Docker</span>
+          <span class="pill">Docker Compose</span>
           <span class="pill">Kubernetes</span>
           <span class="pill">OpenShift</span>
           <span class="pill">Terraform</span>
           <span class="pill">Ansible</span>
+          <span class="pill">Vagrant</span>
         </div>
-      </div>
 
-      <div class="skill-group">
-        <div class="skill-group-title">CI/CD</div>
-        <div class="skill-pills">
+        <div class="skill-cat">CI/CD &amp; GitOps</div>
+        <div class="pills">
+          <span class="pill">GitHub Actions</span>
           <span class="pill">GitLab CI</span>
           <span class="pill">Jenkins</span>
-          <span class="pill">CodePipeline</span>
-          <span class="pill">CloudFormation</span>
+          <span class="pill">AWS CodePipeline &amp; CodeBuild</span>
+          <span class="pill">AWS CloudFormation</span>
           <span class="pill">Serverless</span>
         </div>
-      </div>
 
-      <div class="skill-group">
-        <div class="skill-group-title">Backend</div>
-        <div class="skill-pills">
+        <div class="skill-cat">Backend</div>
+        <div class="pills">
           <span class="pill">Node.js</span>
           <span class="pill">Python</span>
           <span class="pill">Bash</span>
           <span class="pill">Java</span>
           <span class="pill">REST API</span>
+          <span class="pill">CLI &amp; JSON</span>
         </div>
-      </div>
 
-      <div class="skill-group">
-        <div class="skill-group-title">Databases</div>
-        <div class="skill-pills">
+        <div class="skill-cat">Databases</div>
+        <div class="pills">
           <span class="pill">MySQL</span>
           <span class="pill">PostgreSQL</span>
           <span class="pill">MongoDB</span>
-          <span class="pill">DynamoDB</span>
+          <span class="pill">AWS DynamoDB</span>
           <span class="pill">RabbitMQ</span>
         </div>
-      </div>
 
-      <div class="skill-group">
-        <div class="skill-group-title">Security</div>
-        <div class="skill-pills">
+        <div class="skill-cat">Security</div>
+        <div class="pills">
           <span class="pill">PCI DSS</span>
-          <span class="pill">IAM</span>
+          <span class="pill">AWS IAM</span>
           <span class="pill">JWT/RBAC</span>
           <span class="pill">Least Privilege</span>
         </div>
-      </div>
 
-      <div class="skill-group">
-        <div class="skill-group-title">Leadership</div>
-        <div class="skill-pills">
-          <span class="pill">SAFe® Agile</span>
-          <span class="pill">Scrum</span>
-          <span class="pill">OKRs/KPIs</span>
+        <div class="skill-cat">Leadership</div>
+        <div class="pills">
           <span class="pill">Mentoring</span>
-          <span class="pill">Hiring</span>
+          <span class="pill">OKRs/KPIs</span>
+          <span class="pill">Kanban</span>
+          <span class="pill">Documentation</span>
+          <span class="pill">Agile</span>
+          <span class="pill">Scrum</span>
         </div>
       </div>
-    </div>
 
-    <!-- PROJECTS -->
-    <div>
-      <div class="sec-title">Open Source</div>
+      <div class="sb-block">
+        <div class="sec">Open Source</div>
 
-      <div class="proj-item">
-        <div class="proj-name">
-          DevInstall.com
-          <span class="proj-status-dot live"></span>
+        <div class="proj">
+          <div class="proj-head">
+            <span class="proj-name"><a href="https://chadstack.dev" target="_blank">ChadStack.dev</a></span>
+            <span class="dot in-dev"></span>
+          </div>
+          <div class="proj-cmd">curl chadstack.dev/sh | sh</div>
+          <div class="proj-desc">Alternative Stack (Enterprise with SSO)</div>
         </div>
-        <div class="proj-cmd">curl devinstall.com | sh</div>
-        <div class="proj-desc">Dev machine setup, cross-platform, one command.</div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <span class="proj-name"><a href="https://chadstart.com" target="_blank">ChadStart.com</a></span>
+            <span class="dot live"></span>
+          </div>
+          <div class="proj-cmd">curl chadstart.com/sh | sh</div>
+          <div class="proj-desc">Plain-text task management strategy</div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <span class="proj-name"><a href="https://devinstall.com" target="_blank">DevInstall.com</a></span>
+            <span class="dot live"></span>
+          </div>
+          <div class="proj-cmd">curl devinstall.com/sh | sh</div>
+          <div class="proj-desc">Dev machine setup, cross-platform</div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <span class="proj-name"><a href="https://homelabx.net" target="_blank">HomelabX.net</a></span>
+            <span class="dot live"></span>
+          </div>
+          <div class="proj-cmd">curl homelabx.net/sh | sh</div>
+          <div class="proj-desc">10+ self hosted apps and AI platforms</div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <span class="proj-name"><a href="https://MarkdownTree.com" target="_blank">MarkdownTree</a></span>
+            <span class="dot live"></span>
+          </div>
+          <div class="proj-cmd">www.markdowntree.com</div>
+          <div class="proj-desc">Offline Text Editor with mindmaps (PWA)</div>
+        </div>
+
       </div>
 
-      <div class="proj-item">
-        <div class="proj-name">
-          ChadPlan.dev
-          <span class="proj-status-dot live"></span>
-        </div>
-        <div class="proj-cmd">curl chadplan.dev | sh</div>
-        <div class="proj-desc">Plain-text task management strategy.</div>
+    </div><!-- /sidebar -->
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <div class="summary">
+        <div class="sec">Summary</div>
+        <p>10+ years in software development and distributed systems. Specialized in Cloud Infrastructure, GitOps, and SRE practices. Proven track record leading cross-functional teams in Fintech, enterprise aviation, and consulting. Passionate about containers, automation, least-privilege security, and mentoring engineers.</p>
       </div>
 
-      <div class="proj-item">
-        <div class="proj-name">
-          HomelabX.net
-          <span class="proj-status-dot in-dev"></span>
-        </div>
-        <div class="proj-cmd">curl homelabx.net | sh</div>
-        <div class="proj-desc">Homelab: 10+ apps + AI, one command.</div>
-      </div>
+      <div class="sec">Experience</div>
 
-      <div class="proj-item">
-        <div class="proj-name">
-          ChadStack.dev
-          <span class="proj-status-dot in-dev"></span>
-        </div>
-        <div class="proj-cmd">curl chadstack.dev | sh</div>
-        <div class="proj-desc">Full tech company stack over 6 platforms.</div>
-      </div>
-    </div>
-
-    <!-- EXTRA -->
-    <div>
-      <div class="sec-title">Passions</div>
-      <div class="extra-item">Learning &amp; Community</div>
-      <div class="extra-item">Open Source &amp; GitOps</div>
-      <div class="extra-item">Games &amp; Tacos 🌮</div>
-    </div>
-
-  </aside>
-
-  <!-- MAIN CONTENT -->
-  <div class="content">
-
-    <!-- SUMMARY -->
-    <div class="summary">
-      <div class="sec-title">Summary</div>
-      <p>10+ years in software development and distributed systems. Specialized in Cloud Infrastructure, GitOps, and SRE practices. Proven track record leading cross-functional teams in Fintech (PCI DSS), enterprise aviation, and consulting environments. Passionate about automation, least-privilege security, and mentoring engineers.</p>
-    </div>
-
-    <!-- EXPERIENCE -->
-    <div>
-      <div class="sec-title">Experience</div>
-
-      <div class="exp-item">
+      <div class="exp">
         <div class="exp-top">
-          <span class="exp-company">GBM.com — Brokerage House</span>
+          <span class="exp-co">GBM.com — Brokerage House</span>
           <span class="exp-period">2023 – Present</span>
         </div>
         <div class="exp-role">Sr. DevOps Engineer / SRE &amp; Team Lead</div>
-        <ul class="exp-bullets">
-          <li>Hybrid Cloud environment with microservices — IaC, GitOps, automation, least privilege</li>
-          <li>AWS: CloudFormation, EC2, Route53, IAM, Lambda, CodeBuild, CodePipeline, .NET</li>
-          <li>Mentor &amp; cross-team collaborator across engineering squads</li>
+        <ul class="exp-list">
+          <li>Full AWS stack: ECS, Lambda, RDS, DynamoDB, CloudWatch, SQS/SNS</li>
+          <li>Infrastructure as Code, GitOps, Automation, Least Privilege practices</li>
+          <li>Cross Collaboration across engineering teams with Self Service project</li>
+          <li>Reduce Operation tickets with GitHub Actions</li>
         </ul>
         <div class="exp-tags">
-          <span class="exp-tag">AWS</span><span class="exp-tag">CloudFormation</span><span class="exp-tag">Docker</span><span class="exp-tag">Serverless</span><span class="exp-tag">GitOps</span>
+          <span class="etag">AWS</span>
+          <span class="etag">CloudFormation</span>
+          <span class="etag">Docker</span>
+          <span class="etag">Serverless</span>
+          <span class="etag">GitOps</span>
+          <span class="etag">CodePipeline</span>
+          <span class="etag">.NET</span>
         </div>
       </div>
 
-      <div class="exp-item">
+      <div class="exp">
         <div class="exp-top">
-          <span class="exp-company">Clip.mx — Fintech Unicorn</span>
+          <span class="exp-co">Clip.mx — Fintech Unicorn</span>
           <span class="exp-period">2021 – 2023</span>
         </div>
         <div class="exp-role">Sr. DevOps Engineer / SRE &amp; Team Lead</div>
-        <ul class="exp-bullets">
+        <ul class="exp-list">
           <li>Payments &amp; VISA team — resolved critical P1 incidents, PCI DSS / AMEX / VISA compliance</li>
           <li>AWS: ECS, Lambda, RDS, DynamoDB, CloudWatch, SQS/SNS, SAM, ECR, CodePipeline</li>
         </ul>
         <div class="exp-tags">
-          <span class="exp-tag">AWS ECS</span><span class="exp-tag">Python</span><span class="exp-tag">RabbitMQ</span><span class="exp-tag">PCI DSS</span><span class="exp-tag">Docker</span>
+          <span class="etag">AWS</span>
+          <span class="etag">ECS</span>
+          <span class="etag">Python</span>
+          <span class="etag">RabbitMQ</span>
+          <span class="etag">PCI DSS</span>
+          <span class="etag">Docker</span>
         </div>
       </div>
 
-      <div class="exp-item">
+      <div class="exp">
         <div class="exp-top">
-          <span class="exp-company">Chad Systems — Consulting</span>
+          <span class="exp-co">Chad Systems — Consulting</span>
           <span class="exp-period">2020 – 2021</span>
         </div>
         <div class="exp-role">Sr. DevOps Engineer / SRE &amp; Team Lead</div>
-        <ul class="exp-bullets">
-          <li>AWS solutions across analytics, comms, eCommerce &amp; insurance (MetLife México chatbot)</li>
+        <ul class="exp-list">
+          <li>AWS solutions across analytics, comms, eCommerce &amp; insurance</li>
           <li>Built REST API generator with JWT, RBAC, automated testing</li>
         </ul>
         <div class="exp-tags">
-          <span class="exp-tag">Kubernetes</span><span class="exp-tag">Terraform</span><span class="exp-tag">GitLab CI</span><span class="exp-tag">Prometheus</span><span class="exp-tag">MongoDB</span>
+          <span class="etag">Kubernetes</span><span class="etag">Terraform</span><span class="etag">GitLab CI</span><span class="etag">Prometheus</span><span class="etag">MongoDB</span>
         </div>
       </div>
 
-      <div class="exp-item">
+      <div class="exp">
         <div class="exp-top">
-          <span class="exp-company">Southwest Airlines — Enterprise</span>
+          <span class="exp-co">Southwest Airlines — Aviation</span>
           <span class="exp-period">2019 – 2020</span>
         </div>
         <div class="exp-role">Infrastructure Engineer / DevOps Architect</div>
-        <ul class="exp-bullets">
+        <ul class="exp-list">
           <li>CI/CD for 300+ customer teams; led a team of 5 — Kubernetes, OpenShift, Jenkins, Terraform</li>
-          <li>Built analytics system aggregating metrics from Jenkins, BitBucket, SonarQube, Nexus</li>
+          <li>Analytics system aggregating metrics from Jenkins, BitBucket, SonarQube, Nexus</li>
         </ul>
         <div class="exp-tags">
-          <span class="exp-tag">Kubernetes</span><span class="exp-tag">OpenShift</span><span class="exp-tag">Jenkins</span><span class="exp-tag">Ansible</span>
+          <span class="etag">Kubernetes</span><span class="etag">OpenShift</span><span class="etag">Jenkins</span><span class="etag">Ansible</span>
         </div>
       </div>
 
-      <div class="exp-item">
+      <div class="exp">
         <div class="exp-top">
-          <span class="exp-company">Softtek — Enterprise IT</span>
-          <span class="exp-period">2015 – 2020</span>
+          <span class="exp-co">Softtek — Enterprise IT</span>
+          <span class="exp-period">2015 – 2019</span>
         </div>
-        <div class="exp-role">Sr. Software Engineer &amp; Team Lead + Fullstack Instructor</div>
-        <ul class="exp-bullets">
-          <li>Led 7–12 devs; built 15+ backends, webapps, mobile &amp; enterprise portals</li>
-          <li>First instructor at Codellege — Node.js, Docker &amp; DevOps workshops for engineering undergrads</li>
+        <div class="exp-role">Sr. Software Engineer &amp; Team Lead · Fullstack Instructor</div>
+        <ul class="exp-list">
+          <li>Leader of 10 devs; built 15+ backends, webapps, mobile &amp; enterprise portals</li>
+          <li>First instructor at Codellege — Node.js, Docker &amp; DevOps workshops</li>
         </ul>
         <div class="exp-tags">
-          <span class="exp-tag">Node.js</span><span class="exp-tag">AWS</span><span class="exp-tag">Docker</span><span class="exp-tag">PHP</span><span class="exp-tag">Agile</span>
+          <span class="etag">Node.js</span><span class="etag">AWS</span><span class="etag">Docker</span><span class="etag">Vue</span><span class="etag">Agile</span>
         </div>
       </div>
 
-      <div class="exp-item">
+      <div class="exp">
         <div class="exp-top">
-          <span class="exp-company">USA Startups + Interclan ISP</span>
+          <span class="exp-co">Interclan ISP</span>
           <span class="exp-period">2011 – 2015</span>
         </div>
         <div class="exp-role">Web Developer &amp; Linux SysAdmin</div>
-        <ul class="exp-bullets">
+        <ul class="exp-list">
           <li>Linux server maintenance (Debian &amp; RedHat), bare-metal &amp; VMware virtualization</li>
         </ul>
         <div class="exp-tags">
-          <span class="exp-tag">Linux</span><span class="exp-tag">nginx</span><span class="exp-tag">Apache</span><span class="exp-tag">VMware</span>
+          <span class="etag">Linux</span><span class="etag">nginx</span><span class="etag">Apache</span><span class="etag">VMware</span>
         </div>
       </div>
 
-    </div>
-  </div><!-- /content -->
+    </div><!-- /main -->
 
-</div><!-- /page -->
+    <div style="clear:both"></div>
+  </div><!-- /body -->
+
+</div><!-- /sheet -->
+</div><!-- /wrap -->
 
 </body>
 </html>
