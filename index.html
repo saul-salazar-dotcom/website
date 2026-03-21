@@ -632,6 +632,10 @@
     line-height: 1.6;
   }
 
+  .project-desc a {
+    color: var(--cyan);
+  }
+
   .project-footer {
     margin-top: 1.2rem;
     display: flex;
@@ -1034,14 +1038,24 @@
     </div>
 
     <div class="projects-grid">
+      <div class="project-card">
+        <span class="project-status status-live">LIVE ◉</span>
+        <a class="project-name" href="https://todotxt.dev" target="_blank">todotxt.dev</a>
+        <p class="project-tagline">Install as Mobile App</p>
+        <p class="project-desc">App to manage tasks in the <a href="https://github.com/todotxt/todo.txt">todotxt format</a> with a code editor and multiple views.</p>
+        <div class="project-footer">
+          <span class="tl-industry">TASKS APP</span>
+          <a href="https://todotxt.dev" target="_blank" class="project-link">VISIT</a>
+        </div>
+      </div>
 
       <div class="project-card">
         <span class="project-status status-live">LIVE ◉</span>
         <a class="project-name" href="https://markdowntree.com" target="_blank">MarkdownTree.com</a>
         <p class="project-tagline">Install as Mobile App</p>
-        <p class="project-desc">Local-first text editor with support for presentations, mind maps, import and export.</p>
+        <p class="project-desc">Markdown notes editor with support for presentations, mind maps, import and export.</p>
         <div class="project-footer">
-          <span class="tl-industry">Progressive Web App</span>
+          <span class="tl-industry">NOTES APP</span>
           <a href="https://markdowntree.com" target="_blank" class="project-link">VISIT</a>
         </div>
       </div>
@@ -1050,7 +1064,7 @@
         <span class="project-status status-live">LIVE ◉</span>
         <a class="project-name" href="https://devinstall.com" target="_blank">DevInstall.com</a>
         <p class="project-tagline">$ curl devinstall.com | sh</p>
-        <p class="project-desc">Setup a developer machine cross-platform in one command. Starship terminal, VS Code extensions, curated packages — all configurable via env vars.</p>
+        <p class="project-desc">Setup a developer machine in one command. <a href="https://starship.rs/">Starship terminal</a>, VS Code extensions, packages.</p>
         <div class="project-footer">
           <span class="tl-industry">CROSS-PLATFORM</span>
           <a href="https://devinstall.com" target="_blank" class="project-link">VISIT</a>
@@ -1058,12 +1072,12 @@
       </div>
 
       <div class="project-card">
-        <span class="project-status status-live">LIVE ◉</span>
+        <span class="project-status status-dev">IN DEV</span>
         <a class="project-name" href="https://chadstart.com" target="_blank">ChadStart.com</a>
-        <p class="project-tagline">$ curl chadplan.dev | sh</p>
-        <p class="project-desc">Task management strategy with plain text. Minimal, portable, Git-friendly. No apps, no subscriptions — just your editor.</p>
+        <p class="project-tagline">$ npx chadstart dev</p>
+        <p class="project-desc">1 YAML file into a REST & Realtime API, Functions in JS/Go/Python/Bash, Auth, Cron, Files, Hooks.</p>
         <div class="project-footer">
-          <span class="tl-industry">PLANNING</span>
+          <span class="tl-industry">BACKEND AS A SERVICE</span>
           <a href="https://chadstart.com" target="_blank" class="project-link">VISIT</a>
         </div>
       </div>
@@ -1071,8 +1085,8 @@
       <div class="project-card">
         <span class="project-status status-dev">IN DEV</span>
         <a class="project-name" href="https://chadstack.dev" target="_blank">ChadStack.dev</a>
-        <p class="project-tagline">$ curl chadstack.dev | sh</p>
-        <p class="project-desc">Setup a complete tech stack with over 6 platforms in a single command. GitOps-influenced, production-ready from day one.</p>
+        <p class="project-tagline">$ curl chadstack.dev/install.sh | sh</p>
+        <p class="project-desc">Setup a complete tech stack for your company with over 45 platforms in a single command.</p>
         <div class="project-footer">
           <span class="tl-industry">Enterprise</span>
           <a href="https://chadstack.dev" target="_blank" class="project-link">VISIT</a>
@@ -1082,8 +1096,8 @@
       <div class="project-card">
         <span class="project-status status-dev">IN DEV</span>
         <a class="project-name" href="https://homelabx.net" target="_blank">HomelabX.net</a>
-        <p class="project-tagline">$ curl homelabx.net | sh</p>
-        <p class="project-desc">Setup a homelab with 10+ applications — AI included — in a single command line. Self-hosted, fully automated.</p>
+        <p class="project-tagline">$ curl homelabx.net/install.sh | sh</p>
+        <p class="project-desc">Setup a homelab with 10+ applications — AI included — in a single command.</p>
         <div class="project-footer">
           <span class="tl-industry">SELF-HOST</span>
           <a href="https://homelabx.net" target="_blank" class="project-link">VISIT</a>
